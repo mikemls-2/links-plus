@@ -1,7 +1,276 @@
-body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; }
-header { background:#333; color:#fff; padding:10px; display:flex; justify-content:space-between; align-items:center; }
-header h1 { margin:0; }
-nav a { color:#fff; margin-left:10px; text-decoration:none; }
-.login-box { max-width:300px; margin:50px auto; padding:20px; background:#fff; border-radius:8px; }
-.login-box input { width:100%; padding:10px; margin:5px 0; }
-.login-box button { width:100%; padding:10px; background:#333; color:#fff; border:none; cursor:pointer; }
+/* styles.css - Diseño TeleLink */
+
+/* ===== Variables de color y tipografía ===== */
+:root{
+  --bg:#f1f5f8;
+  --primary:#57c0ff;        /* celeste claro */
+  --primary-dark:#1aa3e0;   /* celeste medio */
+  --accent:#0aa0d9;         /* acento azul */
+  --deep:#0a5b73;           /* azul footer */
+  --text:#083040;
+  --muted:#7a8a95;
+  --card-bg: #ffffff;
+  --shadow: 0 10px 25px rgba(6,30,41,0.08);
+  --glow: 0 12px 40px rgba(87,192,255,0.22);
+  --radius-lg: 18px;
+}
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 40px;
+  background:transparent;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.logo{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 20px;
+  border-radius:40px;
+  background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.75));
+  border:3px solid rgba(10,160,217,0.12);
+  box-shadow: var(--glow), 0 6px 20px rgba(6,30,41,0.06);
+  font-weight:700;
+  color:var(--primary-dark);
+  letter-spacing:0.2px;
+}
+.logo::before{
+  content:"";
+  width:10px;height:10px;border-radius:50%;
+  background:linear-gradient(90deg,var(--primary),var(--primary-dark));
+  box-shadow:0 0 18px rgba(87,192,255,0.6);
+}
+.nav-links{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:22px;
+  align-items:center;
+  font-weight:600;
+}
+.nav-links a{
+  text-decoration:none;
+  color:var(--muted);
+  transition:all .18s ease;
+  padding:8px 12px;
+  border-radius:8px;
+}
+.nav-links a:hover, .nav-links a.active{
+  color:var(--primary-dark);
+  background:rgba(10,160,217,0.06);
+  transform:translateY(-1px);
+}
+
+/* ===== LAYOUT: contenedor principal (hero + sidebar) ===== */
+.site-wrap{
+  display:grid;
+  grid-template-columns: 260px 1fr;
+  gap:30px;
+  max-width:1200px;
+  margin:30px auto;
+  padding:0 20px;
+  align-items:start;
+}
+
+/* Sidebar de categorías */
+.sidebar{
+  background:var(--card-bg);
+  border-radius:12px;
+  padding:22px;
+  box-shadow: var(--shadow);
+  border-left:6px solid rgba(10,160,217,0.06);
+}
+.sidebar h2{
+  margin-top:0;
+  color:var(--primary-dark);
+  font-size:1.4rem;
+}
+.sidebar ul{padding-left:18px;color:var(--muted)}
+.sidebar li{margin:10px 0}
+.sidebar a{color:var(--primary-dark); text-decoration:none; font-weight:600}
+
+/* ===== HERO (contenido principal) ===== */
+.hero{
+  padding:40px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), transparent);
+  border-radius:var(--radius-lg);
+  box-shadow: var(--shadow);
+  position:relative;
+}
+.hero h1{
+  margin:0 0 8px 0;
+  font-size:2.2rem;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.brand-pill{
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:40px;
+  color:white;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  box-shadow: 0 10px 30px rgba(10,160,217,0.18);
+  font-weight:800;
+  font-size:1rem;
+}
+.hero p.lead{
+  color:var(--muted);
+  margin:12px 0 24px 0;
+  line-height:1.5;
+  max-width:760px;
+}
+
+/* Buscador central */
+.search-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-top:12px;
+}
+.search-input{
+  flex:1;
+  max-width:560px;
+  padding:14px 18px;
+  border-radius:40px;
+  border:2px solid rgba(6,30,41,0.06);
+  background: #fff;
+  box-shadow: 0 6px 20px rgba(6,30,41,0.06), 0 4px 14px rgba(6,30,41,0.04);
+  font-size:1rem;
+  outline:none;
+}
+.search-input::placeholder{ color:#9aa9b2; font-weight:500 }
+.btn-search{
+  padding:12px 22px;
+  border-radius:40px;
+  background:linear-gradient(180deg,#262626,#111);
+  color:white;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 18px 30px rgba(6,6,6,0.18);
+  transition: transform .12s ease;
+}
+.btn-search:hover{ transform:translateY(-2px) }
+
+/* ===== Lista de grupos (cards) ===== */
+.group-list{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:18px;
+}
+.group-card{
+  background:var(--card-bg);
+  border-radius:12px;
+  padding:16px;
+  box-shadow: 0 8px 18px rgba(6,30,41,0.06);
+  border:1px solid rgba(6,30,41,0.03);
+}
+.group-card h3{ margin:0 0 8px 0; font-size:1.05rem; color:var(--primary-dark) }
+.group-card p{ margin:0 0 12px 0; color:var(--muted); line-height:1.4 }
+.group-card a{
+  display:inline-block;
+  text-decoration:none;
+  padding:8px 12px;
+  border-radius:8px;
+  background:linear-gradient(90deg,var(--primary-dark),var(--accent));
+  color:white;
+  font-weight:700;
+  box-shadow: 0 8px 20px rgba(10,160,217,0.12);
+}
+
+/* Espacio para anuncios */
+.ads-container{
+  margin:26px 0;
+  padding:18px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));
+  text-align:center;
+  color:var(--muted);
+  box-shadow: var(--shadow);
+  border:1px solid rgba(6,30,41,0.03);
+}
+
+/* ===== FOOTER ===== */
+.site-footer{
+  background:var(--deep);
+  color:rgba(255,255,255,0.9);
+  padding:18px;
+  text-align:center;
+  margin-top:40px;
+}
+
+/* ===== PANEL - Login card (centrado) ===== */
+.panel-wrap{
+  max-width:820px;
+  margin:30px auto;
+  padding:20px;
+}
+.login-card{
+  max-width:420px;
+  margin:30px auto;
+  padding:34px 28px;
+  border-radius:24px;
+  background:var(--card-bg);
+  border:3px solid rgba(10,160,217,0.08);
+  box-shadow: 0 20px 60px rgba(10,160,217,0.08), 0 8px 30px rgba(6,30,41,0.06);
+  text-align:center;
+}
+.login-card h2{ margin:0 0 18px 0; color:var(--primary-dark) }
+.login-card input[type="text"],
+.login-card input[type="password"],
+.login-card input[type="url"]{
+  width:100%;
+  padding:14px 16px;
+  margin:10px 0 14px 0;
+  border-radius:12px;
+  border:2px solid rgba(6,30,41,0.06);
+  outline:none;
+  font-size:1rem;
+  background: #fbfcfd;
+}
+.login-card input::placeholder{ color:#9aa9b2 }
+.login-card button{
+  width:100%;
+  padding:14px;
+  margin-top:6px;
+  border-radius:40px;
+  border:none;
+  background:linear-gradient(180deg,#222,#0e0e0e);
+  color:white;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow: 0 18px 40px rgba(6,6,6,0.2);
+}
+.login-card button:hover{ transform:translateY(-2px) }
+
+/* ===== Helpers y responsive ===== */
+.container{ max-width:1200px; margin:0 auto; padding:0 18px }
+
+@media (max-width:900px){
+  .site-wrap{
+    grid-template-columns: 1fr;
+  }
+  .sidebar{ order:2 }
+  .hero{ order:1; padding:28px }
+  .nav-links{ display:none } /* simplificar menú móvil; puedes agregar un botón hamburguesa */
+}
