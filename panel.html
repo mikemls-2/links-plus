@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Aprobación | Links Plus</title>
+    <meta name="description" content="Aprueba o rechaza grupos enviados por los usuarios antes de que aparezcan en el directorio.">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        main {
+            max-width: 900px;
+            margin: auto;
+            padding: 1rem;
+        }
+        .group-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: white;
+        }
+        button {
+            margin: 0.3rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        button:first-of-type {
+            background: #28a745;
+            color: white;
+        }
+        button:last-of-type {
+            background: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">LINKS PLUS</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="register.html">Registrar Grupo</a></li>
+            <li><a href="panel.html" class="active">Panel de Aprobación</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Panel de Aprobación</h1>
+        <p>Revisa los grupos enviados por los usuarios y apruébalos para que aparezcan en el directorio.</p>
+        <div id="listaPendientes"></div>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
